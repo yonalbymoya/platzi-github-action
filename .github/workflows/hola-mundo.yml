@@ -1,0 +1,23 @@
+name: CI - First test with GitHub Actions
+
+on:
+  push:
+    branches: [aprendiendo-github-actions]
+  pull_request:
+    branches: [aprendiendo-github-actions]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repo
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Ejecutar script de prueba
+        run: python main.py
